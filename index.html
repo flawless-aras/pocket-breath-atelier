@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pocket Breath Atelier</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="copy" aria-labelledby="title">
+        <div>
+          <h1 id="title">Pocket Breath Atelier</h1>
+          <p>A small breathing timer for loosening the day without needing an account, a feed, or a dashboard.</p>
+        </div>
+        <div class="presets" aria-label="Breathing patterns">
+          <button class="preset" type="button" data-inhale="4" data-exhale="6" aria-pressed="true"><strong>Settle</strong><span>4 in, 6 out</span></button>
+          <button class="preset" type="button" data-inhale="5" data-exhale="5" aria-pressed="false"><strong>Even</strong><span>5 in, 5 out</span></button>
+          <button class="preset" type="button" data-inhale="3" data-exhale="7" aria-pressed="false"><strong>Unwind</strong><span>3 in, 7 out</span></button>
+        </div>
+      </section>
+      <section class="timer" aria-live="polite">
+        <div class="orb-wrap"><div class="orb" id="orb"></div></div>
+        <div class="status">
+          <div class="phase" id="phase">Ready</div>
+          <div class="count" id="count">4 / 6</div>
+        </div>
+        <div class="controls">
+          <button id="start" type="button">Start</button>
+          <button class="secondary" id="reset" type="button">Reset</button>
+        </div>
+      </section>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>

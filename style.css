@@ -1,0 +1,198 @@
+/* Hallmark - macrostructure: Studio Tool - tone: calm tactile - anchor hue: sea-green */
+@import url("./tokens.css");
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+.shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(18rem, 1.1fr);
+  gap: var(--space-xl);
+  align-items: stretch;
+  padding: var(--space-xl);
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: var(--rule-thin) solid var(--color-line);
+  padding-right: var(--space-xl);
+}
+
+h1 {
+  margin: 0;
+  max-width: 8ch;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  line-height: 0.92;
+  overflow-wrap: anywhere;
+}
+
+.copy p {
+  max-width: 34rem;
+  color: var(--color-muted);
+  font-size: var(--text-lg);
+  line-height: 1.55;
+}
+
+.timer {
+  display: grid;
+  align-content: center;
+  gap: var(--space-lg);
+}
+
+.orb-wrap {
+  display: grid;
+  place-items: center;
+  min-height: 22rem;
+  border: var(--rule-thin) solid var(--color-line);
+  background: var(--color-panel);
+}
+
+.orb {
+  width: min(52vw, 21rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  border: 0.55rem solid var(--color-accent);
+  transform: scale(0.72);
+  transition: transform var(--dur-med) var(--ease-in-out), opacity var(--dur-fast) var(--ease-out);
+}
+
+.orb.active {
+  animation: breathe var(--cycle, 8s) var(--ease-in-out) infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(0.72); }
+  50% { transform: scale(1); }
+}
+
+.status {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-md);
+  align-items: end;
+}
+
+.phase {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 10vw, 6rem);
+  line-height: 0.9;
+}
+
+.count {
+  color: var(--color-muted);
+  font-size: var(--text-lg);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+button {
+  min-height: 2.75rem;
+  border: var(--rule-thin) solid var(--color-ink);
+  border-radius: var(--radius-sm);
+  background: var(--color-ink);
+  color: var(--color-paper);
+  padding: 0 var(--space-md);
+  font: 700 var(--text-md) var(--font-body);
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-out), opacity var(--dur-fast) var(--ease-out);
+}
+
+button.secondary {
+  background: transparent;
+  color: var(--color-ink);
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.presets {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-sm);
+}
+
+.preset {
+  border: var(--rule-thin) solid var(--color-line);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  background: var(--color-panel);
+  cursor: pointer;
+}
+
+.preset strong {
+  display: block;
+}
+
+.preset span {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}
+
+.preset[aria-pressed="true"] {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+@media (max-width: 760px) {
+  .shell {
+    grid-template-columns: 1fr;
+    padding: var(--space-md);
+  }
+
+  .copy {
+    border-right: 0;
+    border-bottom: var(--rule-thin) solid var(--color-line);
+    padding-right: 0;
+    padding-bottom: var(--space-lg);
+  }
+
+  .presets {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orb,
+  button {
+    animation: none;
+    transition-duration: 120ms;
+  }
+}
